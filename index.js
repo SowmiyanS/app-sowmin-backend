@@ -49,8 +49,9 @@ client.connect(err => {
     // connection to mongo is successful, listen for requests
     app.listen(PORT, () => {
         console.log("listening for requests");
+        app.get("/", (req, res) =>
+        {
+            res.send("Hello");
+        });
     })
 });
-
-console.log(PORT);
-console.log(url);
