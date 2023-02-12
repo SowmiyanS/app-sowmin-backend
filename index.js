@@ -28,6 +28,7 @@ app.get("/", (req, res) =>
 
 app.get("/R-2019/:detail", async (req, res) => {
     let detail = req.params.detail;
+    console.log(detail);
     let data = await client.db("database1")
                 .collection("R-2019")
                 .find({ detail: detail });
@@ -37,6 +38,7 @@ app.get("/R-2019/:detail", async (req, res) => {
 
 app.get("/R-2020/:detail", async (req, res) => {
     let detail = req.params.detail;
+    console.log(detail);
     let data = await client.db("database1")
                 .collection("R-2020")
                 .find({ detail: detail });
@@ -46,6 +48,7 @@ app.get("/R-2020/:detail", async (req, res) => {
 
 app.get("/R-2021/:detail", async (req, res) => {
     let detail = req.params.detail;
+    console.log(detail);
     let data = await client.db("database1")
                 .collection("R-2021")
                 .find({ detail: detail });
