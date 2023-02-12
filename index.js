@@ -7,8 +7,9 @@ const PORT = process.env.PORT;
 const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
+console.log("client.connect");
 //Connect to the database before listening
-client.connect(async err => {
+client.connect(err => {
     if(err){ console.error(err); return false;}
     // connection to mongo is successful, listen for requests
     app.listen(PORT, () => {
@@ -20,13 +21,14 @@ client.connect(async err => {
     })
 });
 
+console.log("app.get");
 app.get("/", (req, res) =>
 {
     console.log("hello");
     res.send("Hello");
 });
 
-
+console.log("app.get/r-2019");
 app.get("/R-2019/:detail", async (req, res) => {
     let detail = req.params.detail;
     console.log(detail);
@@ -37,6 +39,7 @@ app.get("/R-2019/:detail", async (req, res) => {
     return res.json(data);
 });
 
+console.log("app.get/r-2020");
 app.get("/R-2020/:detail", async (req, res) => {
     let detail = req.params.detail;
     console.log(detail);
@@ -47,6 +50,7 @@ app.get("/R-2020/:detail", async (req, res) => {
     return res.json(data);
 });
 
+console.log("app.get/r-2021");
 app.get("/R-2021/:detail", async (req, res) => {
     let detail = req.params.detail;
     console.log(detail);
@@ -57,7 +61,9 @@ app.get("/R-2021/:detail", async (req, res) => {
     return res.json(data);
 });
 
+console.log("all");
 app.all('*', (req,res) => {
     res.json({"every thing":"is awesome"});
 })
 
+console.log("end");
