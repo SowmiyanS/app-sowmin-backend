@@ -13,7 +13,7 @@ app.get("/R-2019/:detail", async (req, res) => {
                 .collection("R-2019")
                 .find({ detail: detail });
 
-    return res.json(data)
+    res.json(data);
 });
 
 app.get("/R-2020/:detail", async (req, res) => {
@@ -22,7 +22,7 @@ app.get("/R-2020/:detail", async (req, res) => {
                 .collection("R-2020")
                 .find({ detail: detail });
 
-    return res.json(data)
+    res.json(data);
 });
 
 app.get("/R-2021/:detail", async (req, res) => {
@@ -31,16 +31,16 @@ app.get("/R-2021/:detail", async (req, res) => {
                 .collection("R-2021")
                 .find({ detail: detail });
 
-    return res.json(data)
+    return res.json(data);
 });
 
 app.all('*', (req,res) => {
-    res.json({"every thing":"is awesome"})
+    res.json({"every thing":"is awesome"});
 })
 
 app.get("/", (req, res) =>
 {
-    return res.send("Hello");
+    res.send("Hello");
 });
 
 //Connect to the database before listening
