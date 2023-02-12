@@ -52,3 +52,4 @@ client.connect(err => {
     })
 });
 
+console.log(PORT,MONGODB_URL);
