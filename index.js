@@ -32,11 +32,6 @@ app.get("/", (req, res) =>
     res.send("Hello");
 });
 
-console.log("all");
-app.all('*', (req,res) => {
-    res.json({"every thing":"is awesome"});
-})
-
 //Let's see if this works without giving this error
 //MongoServerSelectionError: Server selection timed out after 30000 ms
 console.log("app.get/r-2019");
@@ -71,5 +66,10 @@ app.get("/R-2021/:detail", async (req, res) => {
     console.log(data);
     return res.json(data);
 });
+
+console.log("all");
+//app.all('*', (req,res) => {
+//    res.json({"every thing":"is awesome"});
+//})
 
 console.log("end");
