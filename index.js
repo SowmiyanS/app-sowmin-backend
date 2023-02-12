@@ -13,7 +13,7 @@ app.get("/R-2019/:detail", async (req, res) => {
                 .collection("R-2019")
                 .find({ detail: detail });
 
-    res.json(data);
+    return res.json(data);
 });
 
 app.get("/R-2020/:detail", async (req, res) => {
@@ -22,7 +22,7 @@ app.get("/R-2020/:detail", async (req, res) => {
                 .collection("R-2020")
                 .find({ detail: detail });
 
-    res.json(data);
+    return res.json(data);
 });
 
 app.get("/R-2021/:detail", async (req, res) => {
