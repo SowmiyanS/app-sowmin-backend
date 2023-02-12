@@ -7,6 +7,19 @@ const PORT = process.env.PORT;
 const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
+//Connect to the database before listening
+client.connect(err => {
+    if(err){ console.error(err); return false;}
+    // connection to mongo is successful, listen for requests
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+        app.get("/", (req, res) =>
+        {
+            res.send("Hello");
+        });
+    })
+});
+
 app.get("/R-2019/:detail", async (req, res) => {
     let detail = req.params.detail;
     let data = await client.db("database1")
@@ -41,17 +54,4 @@ app.all('*', (req,res) => {
 app.get("/", (req, res) =>
 {
     res.send("Hello");
-});
-
-//Connect to the database before listening
-client.connect(err => {
-    if(err){ console.error(err); return false;}
-    // connection to mongo is successful, listen for requests
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-        app.get("/", (req, res) =>
-        {
-            res.send("Hello");
-        });
-    })
 });
