@@ -38,6 +38,11 @@ app.all('*', (req,res) => {
     res.json({"every thing":"is awesome"})
 })
 
+app.get("/", (req, res) =>
+{
+    return res.send("Hello");
+});
+
 //Connect to the database before listening
 client.connect(err => {
     if(err){ console.error(err); return false;}
