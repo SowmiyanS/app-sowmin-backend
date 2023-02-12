@@ -52,4 +52,5 @@ client.connect(err => {
     })
 });
 
-console.log(PORT,MONGODB_URL);
+console.log(PORT);
+console.log(MONGODB_URL);
