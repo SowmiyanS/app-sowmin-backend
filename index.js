@@ -71,8 +71,8 @@ app.get("/R2021/:detail", async (req, res) => {
 });
 
 console.log("all");
-//app.all('*', (req,res) => {
-//    res.json({"every thing":"is awesome"});
-//})
+app.all('*', (req,res) => {
+    res.send("Sorry cannot GET the request please try again....");
+})
 
 console.log("end");
