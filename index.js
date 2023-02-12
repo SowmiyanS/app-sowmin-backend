@@ -8,7 +8,7 @@ const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
 //Connect to the database before listening
-client.connect(err => {
+client.connect(async err => {
     if(err){ console.error(err); return false;}
     // connection to mongo is successful, listen for requests
     app.listen(PORT, () => {
@@ -22,6 +22,7 @@ client.connect(err => {
 
 app.get("/", (req, res) =>
 {
+    console.log("hello");
     res.send("Hello");
 });
 
@@ -32,7 +33,7 @@ app.get("/R-2019/:detail", async (req, res) => {
     let data = await client.db("database1")
                 .collection("R-2019")
                 .find({ detail: detail });
-
+    console.log(data);
     return res.json(data);
 });
 
@@ -42,7 +43,7 @@ app.get("/R-2020/:detail", async (req, res) => {
     let data = await client.db("database1")
                 .collection("R-2020")
                 .find({ detail: detail });
-
+    console.log(data);
     return res.json(data);
 });
 
@@ -52,7 +53,7 @@ app.get("/R-2021/:detail", async (req, res) => {
     let data = await client.db("database1")
                 .collection("R-2021")
                 .find({ detail: detail });
-
+    console.log(data);
     return res.json(data);
 });
 
