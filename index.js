@@ -1,0 +1,47 @@
+const { MongoClient } = require('mongodb');
+const express = require('express');
+const app = express();
+const PORT = process.env.PORT;
+
+// Database
+const url = process.env.MONGODB_URL;
+const client = new MongoClient(url);
+
+app.get("/R-2019/:detail", async (req, res) => {
+    let detail = req.params.detail;
+    let data = await client.db("database1")
+                .collection("R-2019")
+                .find({ detail: detail });
+
+    return res.json(data)
+});
+
+app.get("/R-2020/:detail", async (req, res) => {
+    let detail = req.params.detail;
+    let data = await client.db("database1")
+                .collection("R-2020")
+                .find({ detail: detail });
+
+    return res.json(data)
+});
+
+app.get("/R-2021/:detail", async (req, res) => {
+    let detail = req.params.detail;
+    let data = await client.db("database1")
+                .collection("R-2021")
+                .find({ detail: detail });
+
+    return res.json(data)
+});
+
+app.all('*', (req,res) => {
+    res.json({"every thing":"is awesome"})
+})
+
+//Connect to the database before listening
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log("listening for requests");
+    })
+});
+
