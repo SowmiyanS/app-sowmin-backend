@@ -12,14 +12,15 @@ console.log("client.connect");
 client.connect(err => {
     if(err){ console.error(err); return false;}
     // connection to mongo is successful, listen for requests
-    app.listen(PORT, () => {
-        console.log("listening for requests");
-        app.get("/", (req, res) =>
-        {
-            res.send("Hello");
-        });
-    })
 });
+
+app.listen(PORT, () => {
+    console.log("listening for requests");
+    app.get("/", (req, res) =>
+    {
+        res.send("Hello");
+    });
+})
 
 console.log("app.get");
 app.get("/", (req, res) =>
