@@ -20,6 +20,12 @@ client.connect(err => {
     })
 });
 
+app.get("/", (req, res) =>
+{
+    res.send("Hello");
+});
+
+
 app.get("/R-2019/:detail", async (req, res) => {
     let detail = req.params.detail;
     let data = await client.db("database1")
@@ -51,7 +57,3 @@ app.all('*', (req,res) => {
     res.json({"every thing":"is awesome"});
 })
 
-app.get("/", (req, res) =>
-{
-    res.send("Hello");
-});
